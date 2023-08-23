@@ -176,6 +176,23 @@ func (client *Client) SetTitle(ctx context.Context, title string, target Target)
 	return client.send(NewEvent(ctx, SetTitle, SetTitlePayload{Title: title, Target: target}))
 }
 
+// Using map for dynamic encoder layout
+func (client *Client) SetFeedback(ctx context.Context, SetFeedbackPayloadMap map[string]interface{}, target Target) error {
+	SetFeedbackPayloadMap["Target"] = target
+	return client.send(NewEvent(ctx, SetFeedback, SetFeedbackPayloadMap))
+}
+
+func (client *Client) SetFeedbackTitle(ctx context.Context, title string, target Target) error {
+	return client.send(NewEvent(ctx, SetFeedbackTitle, SetFeedbackTitlePayload{Title: title, Target: target}))
+}
+
+func (client *Client) SetFeedbackIcon(ctx context.Context, icon string, target Target) error {
+	return client.send(NewEvent(ctx, SetFeedbackIcon, SetFeedbackIconPayload{Icon: icon, Target: target}))
+}
+func (client *Client) SetFeedbackValue(ctx context.Context, value string, target Target) error {
+	return client.send(NewEvent(ctx, SetFeedbackValue, SetFeedbackValuePayload{Value: value, Target: target}))
+}
+
 func (client *Client) SetImage(ctx context.Context, base64image string, target Target) error {
 	return client.send(NewEvent(ctx, SetImage, SetImagePayload{Base64Image: base64image, Target: target}))
 }

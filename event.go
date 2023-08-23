@@ -35,6 +35,7 @@ const (
 	StreamDeckMini   DeviceType = 1
 	StreamDeckXL     DeviceType = 2
 	StreamDeckMobile DeviceType = 3
+	StreamDeckPlus   DeviceType = 4
 )
 
 func NewEvent(ctx context.Context, name string, payload interface{}) Event {

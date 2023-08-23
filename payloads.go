@@ -15,6 +15,26 @@ type SetTitlePayload struct {
 	Target Target `json:"target"`
 }
 
+type SetFeedbackPayloadMap struct {
+	Key   string      `json:"key"`
+	Value interface{} `json:"value"`
+}
+
+type SetFeedbackTitlePayload struct {
+	Title  string `json:"title"`
+	Target Target `json:"target"`
+}
+
+type SetFeedbackIconPayload struct {
+	Icon   string `json:"icon"`
+	Target Target `json:"target"`
+}
+
+type SetFeedbackValuePayload struct {
+	Value  string `json:"value"`
+	Target Target `json:"target"`
+}
+
 type SetImagePayload struct {
 	Base64Image string `json:"image"`
 	Target      Target `json:"target"`
@@ -34,6 +54,10 @@ type DidReceiveSettingsPayload struct {
 	IsInMultiAction bool            `json:"isInMultiAction,omitempty"`
 }
 
+type SendToPluginPayload struct {
+	Settings json.RawMessage `json:"settings,omitempty"`
+}
+
 type Coordinates struct {
 	Column int `json:"column,omitempty"`
 	Row    int `json:"row,omitempty"`
@@ -41,6 +65,32 @@ type Coordinates struct {
 
 type DidReceiveGlobalSettingsPayload struct {
 	Settings json.RawMessage `json:"settings,omitempty"`
+}
+
+type TouchTapPayload struct {
+	Settings    json.RawMessage `json:"settings,omitempty"`
+	Coordinates Coordinates     `json:"coordinates,omitempty"`
+	TapPos      []int           `json:"tapPos,omitempty"`
+	Hold        bool            `json:"hold,omitempty"`
+}
+
+type DialDownPayload struct {
+	Settings    json.RawMessage `json:"settings,omitempty"`
+	Coordinates Coordinates     `json:"coordinates,omitempty"`
+	Pressed     bool            `json:"pressed,omitempty"`
+}
+
+type DialUpPayload struct {
+	Settings    json.RawMessage `json:"settings,omitempty"`
+	Coordinates Coordinates     `json:"coordinates,omitempty"`
+	Pressed     bool            `json:"pressed,omitempty"`
+}
+
+type DialRotateEventPayload struct {
+	Settings    json.RawMessage `json:"settings,omitempty"`
+	Coordinates Coordinates     `json:"coordinates,omitempty"`
+	Ticks       int             `json:"ticks,omitempty"`
+	Pressed     bool            `json:"pressed,omitempty"`
 }
 
 type KeyDownPayload struct {
